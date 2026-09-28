@@ -1,4 +1,4 @@
-# Crypto Wallet Landing
+# Silent Wallet
 
 A responsive product landing page for a non-custodial wallet application.
 

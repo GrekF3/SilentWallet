@@ -5,9 +5,9 @@ import { ShaderHero } from "@/components/ShaderHero";
 import Image from "next/image";
 
 const downloads = [
-  { label: "Windows", href: "https://github.com/GrekF3/crypto-wallet-landing/releases/latest" },
-  { label: "macOS", href: "https://github.com/GrekF3/crypto-wallet-landing/releases/latest" },
-  { label: "Android", href: "https://github.com/GrekF3/crypto-wallet-landing/releases/latest" },
+  { label: "Windows", href: "https://github.com/GrekF3/SilentWallet/releases/latest" },
+  { label: "macOS", href: "https://github.com/GrekF3/SilentWallet/releases/latest" },
+  { label: "Android", href: "https://github.com/GrekF3/SilentWallet/releases/latest" },
   { label: "iOS", href: "" },
 ];
 
@@ -26,7 +26,7 @@ export default function Home() {
       <div className={isHeroReady ? "heroContent heroContentVisible" : "heroContent"}>
         <a
           className="headerLogo"
-          href="https://github.com/GrekF3/crypto-wallet-landing"
+          href="https://github.com/GrekF3/SilentWallet"
           aria-label="Silent Wallet GitHub"
         >
           <Image src="/logo.png" alt="" aria-hidden width={28} height={28} priority />
@@ -34,7 +34,7 @@ export default function Home() {
         </a>
 
         <section className="minimalHero" aria-labelledby="hero-title">
-          <a className="openSource" href="https://github.com/GrekF3/crypto-wallet-landing">
+          <a className="openSource" href="https://github.com/GrekF3/SilentWallet">
             Open-Source
           </a>
 
