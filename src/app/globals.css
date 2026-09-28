@@ -1,0 +1,311 @@
+:root {
+  --bg: #030303;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.44);
+  --line: rgba(255, 255, 255, 0.12);
+  --surface: rgba(255, 255, 255, 0.044);
+  --radius: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.heroPage {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: #000;
+  isolation: isolate;
+}
+
+.shaderLogoMask {
+  position: absolute;
+  inset: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  display: block;
+  transform: scale(1.015);
+  pointer-events: none;
+}
+
+.shaderLogoMask {
+  z-index: 0;
+  mix-blend-mode: screen;
+  filter: contrast(1.04) brightness(2.4) saturate(1.02);
+  opacity: 0;
+  transition:
+    opacity 1500ms ease,
+    filter 1800ms ease;
+}
+
+.shaderLogoMaskVisible {
+  opacity: 1;
+}
+
+.heroPage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: none;
+  pointer-events: none;
+}
+
+.grain {
+  position: absolute;
+  inset: -40px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.010) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: radial-gradient(circle at center, black, transparent 74%);
+}
+
+.minimalHero {
+  position: relative;
+  z-index: 4;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 28px;
+  text-align: center;
+}
+
+.openSource {
+  position: fixed;
+  z-index: 5;
+  top: 28px;
+  right: 28px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-top-color: rgba(255, 255, 255, 0.24);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: rgba(255, 255, 255, 0.68);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.55),
+    0 16px 42px rgba(0, 0, 0, 0.46),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(30px) saturate(155%);
+  -webkit-backdrop-filter: blur(30px) saturate(155%);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.headerLogo {
+  position: fixed;
+  top: 28px;
+  left: 28px;
+  z-index: 5;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 12px 0 9px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.headerLogo img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.18));
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.headerLogo span {
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateX(-6px);
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  transition: max-width 220ms ease, opacity 180ms ease, transform 220ms ease;
+}
+
+.headerLogo:hover,
+.headerLogo:focus-visible {
+  border-color: var(--line);
+  border-top-color: rgba(255, 255, 255, 0.22);
+  background: var(--surface);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.55),
+    0 16px 42px rgba(0, 0, 0, 0.46),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(30px) saturate(155%);
+  -webkit-backdrop-filter: blur(30px) saturate(155%);
+}
+
+.headerLogo:hover img,
+.headerLogo:focus-visible img {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.24));
+}
+
+.headerLogo:hover span,
+.headerLogo:focus-visible span {
+  max-width: 72px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+h1 {
+  margin: 0;
+  color: #fff;
+  max-width: calc(100vw - 40px);
+  font-size: clamp(42px, 10vw, 156px);
+  line-height: 0.84;
+  font-weight: 320;
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 72px rgba(0, 0, 0, 0.82),
+    0 0 120px rgba(255, 255, 255, 0.16);
+}
+
+.downloadNav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.downloadNav a,
+.downloadNav span {
+  width: 126px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-top-color: rgba(255, 255, 255, 0.23);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.048);
+  color: rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.55),
+    0 14px 38px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(32px) saturate(155%);
+  -webkit-backdrop-filter: blur(32px) saturate(155%);
+  font-size: 13px;
+  font-weight: 700;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.downloadNav a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.095);
+  color: #fff;
+}
+
+.downloadNav span {
+  opacity: 0.42;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+}
+
+@media (max-width: 720px) {
+  .minimalHero {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .openSource {
+    top: 18px;
+    right: 18px;
+  }
+
+  .downloadNav {
+    width: min(320px, 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .downloadNav a,
+  .downloadNav span {
+    width: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .headerLogo {
+    top: 18px;
+    left: 18px;
+  }
+
+  .openSource {
+    right: 18px;
+  }
+
+  .downloadNav {
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroContent {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(12px);
+  transition:
+    opacity 1500ms ease,
+    transform 1500ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1500ms ease;
+  pointer-events: none;
+}
+
+.heroContentVisible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  pointer-events: auto;
+}

@@ -1,0 +1,36 @@
+/node_modules
+/.next
+/out
+*.tsbuildinfo
+next-env.d.ts
+.next-dev.log
+.next-dev.err.log
+.env*
+!.env.example
+.vercel
+# Local configuration and runtime data
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+/env/
+__pycache__/
+*.py[cod]
+*.db
+*.sqlite
+*.sqlite3
+*.log
+media/
+uploads/
+
+# Frontend build state
+node_modules/
+.next/
+coverage/
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

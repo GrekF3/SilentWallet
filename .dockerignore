@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+.git
+.gitignore
+.env*
+.next-dev.log
+.next-dev.err.log
+tsconfig.tsbuildinfo
+npm-debug.log*
+docker-compose*.yml

@@ -1,0 +1,14 @@
+services:
+  silent_site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: silent_site:latest
+    container_name: silent_site
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.silent-site.rule=Host(`swallet.site`) || Host(`www.swallet.site`)
+      - traefik.http.routers.silent-site.entrypoints=websecure
+      - traefik.http.routers.silent-site.tls.certresolver=letsencrypt
+      - traefik.http.services.silent-site.loadbalancer.server.port=80
